@@ -1,4 +1,4 @@
-# technological_path_API
+# Technological Path API
 
 
 ### Prerequisites
