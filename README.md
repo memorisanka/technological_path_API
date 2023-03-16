@@ -19,8 +19,6 @@ To get started, clone this repository and navigate to the project directory.<br>
 Once the app is running, you can access the web interface by navigating 
 to http://localhost:8000 in your web browser.<br><br>
 
-To upload a file, click the "Choose file" button and select a file 
-from your local machine. Then click the "Upload" button.
 
 ### Stopping the App
 
