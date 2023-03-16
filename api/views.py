@@ -15,6 +15,8 @@ class ImportData(View):
         url = f'https://mocki.io/v1/{field_id}'
         response = requests.get(url)
         if response.status_code == 200:
+            field = Field(id=field_id)
+            field.save()
             data = response.json()
             for item in data['values']:
                 id = item['id']
@@ -26,8 +28,6 @@ class ImportData(View):
                 a_lon = item['aPoint']['lon']
                 b_lat = item['bPoint']['lat']
                 b_lon = item['bPoint']['lon']
-                field = Field(id=field_id)
-                field.save()
                 technical_path = TechnicalPath(id=id, name=name, last_modified_time=last_modified_time,
                                                archived=archived,
                                                heading=heading, a_lat=a_lat, a_lon=a_lon, b_lat=b_lat, b_lon=b_lon,
