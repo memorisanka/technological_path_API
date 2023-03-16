@@ -1,0 +1,42 @@
+{% extends 'base.html'%}
+{% block content %}
+<table border="1">
+    <caption>List of technical paths</caption><br>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Heading</th>
+        <th>Field ID</th>
+        <th>aPoint latitude</th>
+        <th>aPoint longitude</th>
+        <th>bPoint latitude</th>
+        <th>bPoint longitude</th>
+        <th>Last modified</th>
+        <th>Archived</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {% for obj in object_list %}
+    <tr>
+        <td>{{ obj.id }}</td>
+        <td>{{ obj.name|default:"-" }}</td>
+        <td>{{ obj.heading|default:"-" }}</td>
+        <td>{{ obj.field.id }}</td>
+        <td>{{ obj.a_lat }}</td>
+        <td>{{ obj.a_lon }}</td>
+        <td>{{ obj.b_lat }}</td>
+        <td>{{ obj.b_lon }}</td>
+        <td>{{ obj.last_modified_time | date }}</td>
+        <td>{{ obj.archived }}</td>
+
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="5">no items</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

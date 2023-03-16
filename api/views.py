@@ -1,7 +1,12 @@
 import requests
-from django.shortcuts import HttpResponse
+from django.shortcuts import HttpResponse, render
+from django.views.generic import ListView
 
 from .models import TechnicalPath, Field
+
+
+def home(request):
+    return render(request, 'home.html')
 
 
 def import_technical_paths(request):
@@ -23,8 +28,14 @@ def import_technical_paths(request):
             field = Field(id=field_id)
             field.save()
             technical_path = TechnicalPath(id=id, name=name, last_modified_time=last_modified_time, archived=archived,
-                                           heading=heading, a_lat=a_lat, a_lon=a_lon, b_lat=b_lat, b_lon=b_lon, field_id=field_id)
+                                           heading=heading, a_lat=a_lat, a_lon=a_lon, b_lat=b_lat, b_lon=b_lon,
+                                           field_id=field_id)
             technical_path.save()
         return HttpResponse('Data imported successfully')
     else:
         return HttpResponse('Error importing data')
+
+
+class PathView(ListView):
+    model = TechnicalPath
+    template_name = 'technicalpath_list.html'
