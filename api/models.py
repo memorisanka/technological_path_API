@@ -1,6 +1,4 @@
-import requests
 from django.db import models
-from pydantic import BaseModel
 
 
 # class Point(BaseModel):
@@ -33,6 +31,9 @@ from pydantic import BaseModel
 class Field(models.Model):
     id = models.CharField(max_length=100, unique=True, primary_key=True)
 
+    def get_technical_path(self):
+        return self.fields.all()
+
 
 class TechnicalPath(models.Model):
     id = models.CharField(max_length=100, unique=True, primary_key=True)
@@ -44,4 +45,4 @@ class TechnicalPath(models.Model):
     b_lon = models.FloatField()
     last_modified_time = models.DateTimeField()
     archived = models.BooleanField(default=False)
-    field = models.ForeignKey(Field, on_delete=models.CASCADE)
+    field = models.ForeignKey(Field, on_delete=models.CASCADE, related_name='fields')

@@ -1,0 +1,37 @@
+{% extends 'base.html'%}
+{% block content %}
+<table border="1">
+    <caption>Field paths</caption>
+    <br>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Heading</th>
+        <th>Field ID</th>
+        <th>aPoint latitude</th>
+        <th>aPoint longitude</th>
+        <th>bPoint latitude</th>
+        <th>bPoint longitude</th>
+        <th>Last modified</th>
+        <th>Archived</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for path in object.get_technical_path %}
+    <tr>
+        <td>{{ path.id }}</td>
+        <td>{{ path.name|default:"-" }}</td>
+        <td>{{ path.heading|default:"-" }}</td>
+        <td>{{ path.field.id }}</td>
+        <td>{{ path.a_lat }}</td>
+        <td>{{ path.a_lon }}</td>
+        <td>{{ path.b_lat }}</td>
+        <td>{{ path.b_lon }}</td>
+        <td>{{ path.last_modified_time}}</td>
+        <td>{{ path.archived }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,7 +1,7 @@
 {% extends 'base.html'%}
 {% block content %}
 <table border="1">
-    <caption>List of technical paths</caption><br>
+    <caption>List of technical paths</caption>
     <thead>
     <tr>
         <th>ID</th>
@@ -28,13 +28,13 @@
         <td>{{ obj.a_lon }}</td>
         <td>{{ obj.b_lat }}</td>
         <td>{{ obj.b_lon }}</td>
-        <td>{{ obj.last_modified_time}}</td>
+        <td>{{ obj.last_modified_time }}</td>
         <td>{{ obj.archived }}</td>
 
     </tr>
     {% empty %}
     <tr>
-        <td colspan="5">no items</td>
+        <td colspan="5">No paths.</td>
     </tr>
     {% endfor %}
     </tbody>
