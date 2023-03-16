@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from api.views import import_technical_paths
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('import-technical-paths/', import_technical_paths, name='import-technical-paths'),
 ]
