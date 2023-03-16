@@ -16,11 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from api.views import home, import_technical_paths, PathView
+from api.views import HomeView, ImportData, PathView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name='home_page'),
-    path('import-technical-paths/', import_technical_paths, name='import-technical-paths'),
+    path('', HomeView.as_view(), name='home_page'),
+    path('import-technical-paths/', ImportData.as_view(), name='import-technical-paths'),
     path('view_data/', PathView.as_view(), name='view_data'),
 ]

@@ -12,9 +12,6 @@ from pydantic import BaseModel
 # response = requests.get('https://mocki.io/v1/cbf7bb1d-c5b1-4dfa-83d2-5800f78ffb8d')
 # data = response.json()
 #
-# for item in data['values'][0]:
-#     print(item)
-#
 #
 # class Path(BaseModel):
 #     id: str
@@ -31,7 +28,7 @@ from pydantic import BaseModel
 #
 # for item in data['values']:
 #     Path(**item)
-
+#
 
 class Field(models.Model):
     id = models.CharField(max_length=100, unique=True, primary_key=True)
