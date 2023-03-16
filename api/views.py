@@ -10,8 +10,7 @@ class HomeView(TemplateView):
 
 
 class ImportData(View):
-    @staticmethod
-    def get(request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         field_id = 'cbf7bb1d-c5b1-4dfa-83d2-5800f78ffb8d'
         url = f'https://mocki.io/v1/{field_id}'
         response = requests.get(url)
@@ -34,10 +33,10 @@ class ImportData(View):
                                                heading=heading, a_lat=a_lat, a_lon=a_lon, b_lat=b_lat, b_lon=b_lon,
                                                field_id=field_id)
                 technical_path.save()
-                return HttpResponse("Data successfully imported.")
-            return HttpResponse("Uups... There is a problem with import!")
+            return HttpResponse("Data successfully imported.")
+        return HttpResponse("Ups... There was a problem with import!")
 
 
 class PathView(ListView):
     model = TechnicalPath
-    template_name = 'technicalpath_list.html'
+    template_name = 'technical_path_list.html'
