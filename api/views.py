@@ -1,14 +1,18 @@
 import requests
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
-from django.views.generic import ListView, View, DetailView, TemplateView
+from django.views import View
+from django.views.generic import ListView, DetailView, TemplateView
 
 from .models import TechnicalPath, Field
+
 
 class HomePage(TemplateView):
     template_name = 'home.html'
 
-class ImportData(View):
+
+class ImportData(View, LoginRequiredMixin):
     def get(self, request, *args, **kwargs):
         field_id = 'cbf7bb1d-c5b1-4dfa-83d2-5800f78ffb8d'
         url = f'https://mocki.io/v1/{field_id}'
@@ -40,16 +44,16 @@ class ImportData(View):
         return redirect('fields-list')
 
 
-class PathView(ListView):
+class PathView(ListView, LoginRequiredMixin):
     model = TechnicalPath
     template_name = 'technical_path_list.html'
 
 
-class FieldListView(ListView):
+class FieldListView(ListView, LoginRequiredMixin):
     model = Field
     template_name = 'fields_list.html'
 
 
-class FieldDetailsView(DetailView):
+class FieldDetailsView(DetailView, LoginRequiredMixin):
     model = Field
     template_name = 'field_details.html'
