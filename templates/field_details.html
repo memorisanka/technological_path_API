@@ -1,4 +1,5 @@
 {% extends 'base.html'%}
+{% load crispy_forms_tags %}
 {% block content %}
 <table border="1">
     <caption>Field paths</caption>
@@ -8,7 +9,6 @@
         <th>ID</th>
         <th>Name</th>
         <th>Heading</th>
-        <th>Field ID</th>
         <th>aPoint latitude</th>
         <th>aPoint longitude</th>
         <th>bPoint latitude</th>
@@ -23,7 +23,6 @@
         <td>{{ path.id }}</td>
         <td>{{ path.name|default:"-" }}</td>
         <td>{{ path.heading|default:"-" }}</td>
-        <td>{{ path.field.id }}</td>
         <td>{{ path.a_lat }}</td>
         <td>{{ path.a_lon }}</td>
         <td>{{ path.b_lat }}</td>

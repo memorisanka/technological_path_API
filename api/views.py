@@ -1,10 +1,12 @@
 import requests
 from django.contrib import messages
 from django.shortcuts import redirect
-from django.views.generic import ListView, View, DetailView
+from django.views.generic import ListView, View, DetailView, TemplateView
 
 from .models import TechnicalPath, Field
 
+class HomePage(TemplateView):
+    template_name = 'home.html'
 
 class ImportData(View):
     def get(self, request, *args, **kwargs):
@@ -14,7 +16,7 @@ class ImportData(View):
 
         if response.status_code != 200:
             messages.add_message(request, messages.ERROR, 'Failed to import data!')
-            return redirect('home_page')
+            return redirect('home-page')
 
         field = Field(id=field_id)
         field.save()
@@ -35,7 +37,7 @@ class ImportData(View):
             technical_path.save()
 
         messages.add_message(request, messages.INFO, 'Data imported!')
-        return redirect('home_page')
+        return redirect('home-page')
 
 
 class PathView(ListView):
@@ -45,7 +47,7 @@ class PathView(ListView):
 
 class FieldListView(ListView):
     model = Field
-    template_name = 'home.html'
+    template_name = 'fields_list.html'
 
 
 class FieldDetailsView(DetailView):
