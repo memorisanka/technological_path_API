@@ -12,7 +12,7 @@ class HomePage(TemplateView):
     template_name = 'home.html'
 
 
-class ImportData(View, LoginRequiredMixin):
+class ImportData(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         field_id = 'cbf7bb1d-c5b1-4dfa-83d2-5800f78ffb8d'
         url = f'https://mocki.io/v1/{field_id}'
@@ -20,7 +20,7 @@ class ImportData(View, LoginRequiredMixin):
 
         if response.status_code != 200:
             messages.add_message(request, messages.ERROR, 'Failed to import data!')
-            return redirect('home-page')
+            return redirect('fields-list')
 
         field = Field(id=field_id)
         field.save()
@@ -44,16 +44,16 @@ class ImportData(View, LoginRequiredMixin):
         return redirect('fields-list')
 
 
-class PathView(ListView, LoginRequiredMixin):
+class PathView(LoginRequiredMixin, ListView):
     model = TechnicalPath
     template_name = 'technical_path_list.html'
 
 
-class FieldListView(ListView, LoginRequiredMixin):
+class FieldListView(LoginRequiredMixin, ListView):
     model = Field
     template_name = 'fields_list.html'
 
 
-class FieldDetailsView(DetailView, LoginRequiredMixin):
+class FieldDetailsView(LoginRequiredMixin, DetailView):
     model = Field
     template_name = 'field_details.html'
