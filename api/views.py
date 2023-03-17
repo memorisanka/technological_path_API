@@ -37,7 +37,7 @@ class ImportData(View):
             technical_path.save()
 
         messages.add_message(request, messages.INFO, 'Data imported!')
-        return redirect('home-page')
+        return redirect('fields-list')
 
 
 class PathView(ListView):
