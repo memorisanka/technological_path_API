@@ -2,9 +2,9 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
-<table class="styled-table">
+<table border="1px" text-align="center">
     <thead>
-    <tr>
+    <tr align="center">
         <th>ID</th>
         <th>Name</th>
         <th>Heading</th>
@@ -18,7 +18,7 @@
     </thead>
     <tbody>
     {% for path in object.get_technical_path %}
-    <tr>
+    <tr align="center">
         <td>{{ path.id }}</td>
         <td>{{ path.name|default:"-" }}</td>
         <td>{{ path.heading|default:"-" }}</td>

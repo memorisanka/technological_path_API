@@ -11,11 +11,11 @@
 <!--    {% endif %}-->
 <!--    <br>-->
 
-    <table border="1">
+    <table border="1" >
         <caption>Available Fields</caption>
         <br>
         <thead>
-        <tr>
+        <tr align="center">
             <th>Field ID</th>
         </tr>
         </thead>
@@ -23,7 +23,7 @@
 
         {% for obj in object_list %}
         <tr>
-            <td>
+            <td align="center">
                 <a href="{% url 'field-details' obj.id %}">{{ obj.id }}</a>
             </td>
         </tr>
