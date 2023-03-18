@@ -14,6 +14,8 @@ class HomePage(TemplateView):
 
 
 class ImportData(LoginRequiredMixin, View):
+    """Import data from endpoint"""
+
     def get(self, request, *args, **kwargs):
         field_id = 'cbf7bb1d-c5b1-4dfa-83d2-5800f78ffb8d'
         url = f'https://mocki.io/v1/{field_id}'
