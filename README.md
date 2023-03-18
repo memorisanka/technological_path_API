@@ -7,7 +7,9 @@ To get started, clone this repository and navigate to the project directory.<br>
 *git clone https://github.com/memorisanka/technological_path_API* <br>
 <br>
 Use the command below to install the packages according to the configuration file:<br>
-*pip install -r requirements.txt*
+*pip install -r requirements.txt* <br>
+<br>
+Change _.env.example_ file to _.env_
 
 ### Running the app
 *python manage.py runserver*
