@@ -2,6 +2,7 @@ from pydantic import BaseModel, Field
 
 """Validation models for incoming data"""
 
+
 class Point(BaseModel):
     type: str
     lat: float
