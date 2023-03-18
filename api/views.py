@@ -12,6 +12,7 @@ class HomePage(TemplateView):
     template_name = 'home.html'
 
 
+
 class ImportData(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         field_id = 'cbf7bb1d-c5b1-4dfa-83d2-5800f78ffb8d'
